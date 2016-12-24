@@ -1,0 +1,45 @@
+circle.background {
+        stroke: #db9e36;
+        fill: #fffad5;
+        stroke-width: 1;
+    }
+    
+    .axis path {
+        fill: none;
+        stroke: #CCC;
+        stroke-width: 1;
+    }
+    
+    .axisScale text {
+        display: none;
+    }
+    
+    .radar path {
+        stroke-width: 1;
+        fill-opacity: 0.6;
+    }
+    
+    .radar0 {
+        stroke: #8a0917;
+        fill: #8a0917;
+    }
+    
+    .radar1 {
+        stroke: #8a0917;
+        fill: #8a0917;
+    }
+    
+    .axisLabel {
+        font: 14px sans-serif;
+        text-transform: capitalize;
+        fill: #ffd393;
+        stroke: none;
+    }
+    
+    #container {
+        width: 320px;
+    }
+    
+    .axis line {
+        stroke:none;
+    }

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src='http://cdnjs.cloudflare.com/ajax/libs/d3/3.4.11/d3.min.js'></script>
+    <script src="imgbardata_org.js"></script>
+    <script src="imgbar.js"></script>
+    <style type="text/css">
+    body {
+        font-family: Arial, sans-serif;
+        font-size: 10px;
+    }
+    
+    .imgbar_xaxis {
+        fill: none;
+        stroke: #b6b6b6;
+        stroke-width: 0.5;
+        shape-rendering: crispEdges;
+    }
+    /*.tick line{fill:none;stroke:none;}*/
+    
+    .tick text {
+        fill: #999;
+    }
+    
+    g.journal.active {
+        cursor: pointer;
+    }
+    
+    .imgbar_label {
+        font-size: 10px;
+    }
+    
+    .tick:nth-child(even) {
+        display: none;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="imgbar"></div>
+    <script type="text/javascript">
+    imgbar();
+    // function truncate(str, maxLength, suffix) {
+    //     if (str.length > maxLength) {
+    //         str = str.substring(0, maxLength + 1);
+    //         str = str.substring(0, Math.min(str.length, str.lastIndexOf(" ")));
+    //         str = str + suffix;
+    //     }
+    //     return str;
+    // }
+
+    // var margin = {
+    //         top: 20,
+    //         right: 200,
+    //         bottom: 0,
+    //         left: 80
+    //     },
+    //     width = 100,
+    //     height = 150;
+
+    // var start_year = 1,
+    //     end_year = 5;
+
+    // var c = d3.scale.category20c();
+
+    // var x = d3.scale.linear()
+    //     .range([0, width]);
+
+    // var xAxis = d3.svg.axis()
+    //     .scale(x)
+    //     .orient("top")
+    //     .tickFormat(d3.format("d"));
+    // //var formatYears = d3.format("0000");
+    // //xAxis.tickFormat(formatYears);
+
+    // var svg = d3.select("body").append("svg")
+    //     .attr("width", width + margin.left + margin.right)
+    //     .attr("height", height + margin.top + margin.bottom)
+    //     .style("margin-left", margin.left + "px")
+    //     .append("g")
+    //     .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    // var data = jo_data;
+    // //d3.json("journals_optogenetic.json", function(data) {
+    // x.domain([start_year, end_year]);
+    // var xScale = d3.scale.linear()
+    //     .domain([start_year, end_year])
+    //     .range([0, width]);
+
+    // svg.append("g")
+    //     .attr("class", "imgbar_xaxis")
+    //     .attr("transform", "translate(0," + 0 + ")")
+    //     .call(xAxis);
+
+    // for (var j = 0; j < data.length; j++) {
+    //     var g = svg.append("g").attr("class", "journal");
+    //     console.log(data[j]);
+    //     var icons = g.selectAll("image")
+    //         .data(data[j]['articles'])
+    //         .enter()
+    //         .append("svg:image")
+    //         .attr("xlink:href", function(d){
+    //             // console.log(data[j]);
+    //             // return "thumb-up.svg"
+    //             if (d[1] > 0){
+    //                 return data[j]['img']; 
+    //             } else {
+    //                 return;
+    //             }})
+    //         .attr("width", 10)
+    //         .attr("height", 10)
+
+    //     var text = g.selectAll("text")
+    //         .data(data[j]['articles'])
+    //         .enter()
+    //         .append("text");
+
+    //     icons
+    //         .attr("x", function(d, i) {
+    //             return xScale(d[0]) - 5;
+    //         })
+    //         .attr("y", j * 20 + 5)
+
+    //     g.append("text")
+    //         .attr("y", j * 20 + 15)
+    //         .attr("x", -15)
+    //         .attr("class", "imgbar_label")
+    //         .text(truncate(data[j]['name'], 30, "..."))
+    //         .style("text-anchor", "end")
+    //         .style("fill", function(d) {
+    //             return c(j);
+    //         })
+    // };
+
+    </script>
+</body>
+
+</html>
