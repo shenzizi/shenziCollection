@@ -8,7 +8,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 51,
-        "img": "../public/imgs/foodmap/fire.svg",
+        "img": "./imgs/foodmap/fire.svg",
         "name": "餐廳熱度"
     }, {
         "rank": [
@@ -19,7 +19,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/smile.svg",
+        "img": "./imgs/foodmap/smile.svg",
         "name": "好感度"
     }, {
         "rank": [
@@ -30,7 +30,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/multi.svg",
+        "img": "./imgs/foodmap/multi.svg",
         "name": "餐點多樣"
     }, {
         "rank": [
@@ -41,7 +41,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/clock.svg",
+        "img": "./imgs/foodmap/clock.svg",
         "name": "排隊時間"
     }, {
         "rank": [
@@ -52,7 +52,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/eat.svg",
+        "img": "./imgs/foodmap/eat.svg",
         "name": "用餐時間"
     }]
 }, {
@@ -65,7 +65,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 51,
-        "img": "../public/imgs/foodmap/fire.svg",
+        "img": "./imgs/foodmap/fire.svg",
         "name": "餐廳熱度"
     }, {
         "rank": [
@@ -76,7 +76,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/smile.svg",
+        "img": "./imgs/foodmap/smile.svg",
         "name": "好感度"
     }, {
         "rank": [
@@ -87,7 +87,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/multi.svg",
+        "img": "./imgs/foodmap/multi.svg",
         "name": "餐點多樣"
     }, {
         "rank": [
@@ -98,7 +98,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/clock.svg",
+        "img": "./imgs/foodmap/clock.svg",
         "name": "排隊時間"
     }, {
         "rank": [
@@ -109,7 +109,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/eat.svg",
+        "img": "./imgs/foodmap/eat.svg",
         "name": "用餐時間"
     }]
 }, {
@@ -122,7 +122,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 51,
-        "img": "../public/imgs/foodmap/fire.svg",
+        "img": "./imgs/foodmap/fire.svg",
         "name": "餐廳熱度"
     }, {
         "rank": [
@@ -133,7 +133,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/smile.svg",
+        "img": "./imgs/foodmap/smile.svg",
         "name": "好感度"
     }, {
         "rank": [
@@ -144,7 +144,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/multi.svg",
+        "img": "./imgs/foodmap/multi.svg",
         "name": "餐點多樣"
     }, {
         "rank": [
@@ -155,7 +155,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/clock.svg",
+        "img": "./imgs/foodmap/clock.svg",
         "name": "排隊時間"
     }, {
         "rank": [
@@ -166,7 +166,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/eat.svg",
+        "img": "./imgs/foodmap/eat.svg",
         "name": "用餐時間"
     }]
 }, {
@@ -179,7 +179,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 51,
-        "img": "../public/imgs/foodmap/fire.svg",
+        "img": "./imgs/foodmap/fire.svg",
         "name": "餐廳熱度"
     }, {
         "rank": [
@@ -190,7 +190,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/smile.svg",
+        "img": "./imgs/foodmap/smile.svg",
         "name": "好感度"
     }, {
         "rank": [
@@ -201,7 +201,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/multi.svg",
+        "img": "./imgs/foodmap/multi.svg",
         "name": "餐點多樣"
     }, {
         "rank": [
@@ -212,7 +212,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/clock.svg",
+        "img": "./imgs/foodmap/clock.svg",
         "name": "排隊時間"
     }, {
         "rank": [
@@ -223,7 +223,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/eat.svg",
+        "img": "./imgs/foodmap/eat.svg",
         "name": "用餐時間"
     }]
 }, {
@@ -236,7 +236,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 51,
-        "img": "../public/imgs/foodmap/fire.svg",
+        "img": "./imgs/foodmap/fire.svg",
         "name": "餐廳熱度"
     }, {
         "rank": [
@@ -247,7 +247,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/smile.svg",
+        "img": "./imgs/foodmap/smile.svg",
         "name": "好感度"
     }, {
         "rank": [
@@ -258,7 +258,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/multi.svg",
+        "img": "./imgs/foodmap/multi.svg",
         "name": "餐點多樣"
     }, {
         "rank": [
@@ -269,7 +269,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/clock.svg",
+        "img": "./imgs/foodmap/clock.svg",
         "name": "排隊時間"
     }, {
         "rank": [
@@ -280,7 +280,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/eat.svg",
+        "img": "./imgs/foodmap/eat.svg",
         "name": "用餐時間"
     }]},{
     "food6": [{
@@ -292,7 +292,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 51,
-        "img": "../public/imgs/foodmap/fire.svg",
+        "img": "./imgs/foodmap/fire.svg",
         "name": "餐廳熱度"
     }, {
         "rank": [
@@ -303,7 +303,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/smile.svg",
+        "img": "./imgs/foodmap/smile.svg",
         "name": "好感度"
     }, {
         "rank": [
@@ -314,7 +314,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/multi.svg",
+        "img": "./imgs/foodmap/multi.svg",
         "name": "餐點多樣"
     }, {
         "rank": [
@@ -325,7 +325,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 35,
-        "img": "../public/imgs/foodmap/clock.svg",
+        "img": "./imgs/foodmap/clock.svg",
         "name": "排隊時間"
     }, {
         "rank": [
@@ -336,7 +336,7 @@ var rank_data = [{
             [5, 0]
         ],
         "total": 34,
-        "img": "../public/imgs/foodmap/eat.svg",
+        "img": "./imgs/foodmap/eat.svg",
         "name": "用餐時間"
     }]
 }]
