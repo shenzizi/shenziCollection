@@ -1,0 +1,611 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>shenzi</title>
+    <link rel="stylesheet" type="text/css" href="dist/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Helvetica">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
+    <!--     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/chart.css"> -->
+    <script src="dist/jquery.min.js"></script>
+    <script src="dist/bootstrap.min.js"></script>
+    <script src="dist/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/shenzidata.js"></script>
+    <style>
+    body {
+        font-family: Lato;
+        overflow: hidden;
+    }
+    
+    .intro, .resume {
+        width: 40vw;
+        height: 100vh;
+        background: yellow;
+        position: absolute;
+        top: 0;
+        left: 60vw;
+        border: 1px solid green;
+    }
+    .intro {
+        display: none;
+    }
+    /*#txt_intro_keypo {
+        display: block;
+    }
+    
+    #txt_intro_shsx,
+    #txt_intro_dv_revision {
+        display: none;
+        background: lightblue;
+    }
+    */
+    .intro button {
+        margin-top: 50px;
+    }
+    
+    h1 {
+        font-size: 22px;
+    }
+    
+    p {
+        font-size: 20px;
+    }
+    </style>
+</head>
+
+<body>
+    <!--     <div class="intro" id="txt_intro_keypo">
+        <div>
+            <p>keypo developer</p>
+            <p>bigdata</p>
+        </div>
+    </div>
+    <div class="intro" id="txt_intro_shsx">
+        <div>
+            <p>shsx</p>
+            <p>gov</p>
+        </div>
+    </div>
+    <div class="intro" id="txt_intro_dv_revision">
+        <div>
+            <p>dv_revision</p>
+            <p>num1</p>
+        </div>
+    </div> -->
+    <div class="resume">
+        <div class="container" id="resume">
+            <h1>Shenzi's Resume</h1>
+            <hr>
+            <h2>Profile</h2>
+            <h2>Summery</h2>
+            <h2>Work</h2>
+            <h2>Education</h2>
+        </div>
+    </div>
+    <div class="intro">
+        <div class="container" style="border:1px solid blue;margin:0 auto;max-width: 550px;margin-top:40vh">
+            <div class="title">
+                <h1></h1>
+            </div>
+            <hr>
+            <div class="intro_txt">
+                <p></p>
+            </div>
+            <a href="" target="_blank">
+                <button type="button" class="btn btn-primary">View</button>
+            </a>
+        </div>
+    </div>
+    <div id="chart" style="border:2px solid purple;"></div>
+    <script>
+    function setChartSize() {
+        var width = $("#chart").width(),
+            height = h = $(window).height(),
+            w = $(window).width(),
+            h = $(window).height(),
+            min_wh = Math.min(w, h);
+        console.log(width, height, min_wh);
+
+        var custom_oc = function() {
+            if (min_wh > 550) {
+                if (min_wh > 1280) {
+                    return 1.5;
+                } else if (min_wh <= 1280 && min_wh > 1024) {
+                    return 1.65;
+                } else if (w === 1024 && h === 768) {
+                    return 1.7;
+                } else if (min_wh === 768) {
+                    return 2.25;
+                } else {
+                    return 1.6;
+                }
+            } else if (min_wh <= 550 && min_wh > 470) {
+                return 1.55;
+            } else if (min_wh <= 470 && min_wh >= 430) {
+                return 1.65;
+            } else if (min_wh < 430) {
+                return 1.7;
+            }
+        }();
+
+
+
+        console.log(w, width, min_wh, custom_oc);
+
+
+        // var outer_circle = Math.min(height, width) / custom_oc,
+        var outer_circle = Math.min(height, width) / 2.5,
+            circle_length = 6,
+            start_circle_r = Math.min(height, width) / 2 / 4.5,
+            circle_add = (outer_circle - start_circle_r) / circle_length,
+            start_angle = 0,
+            angle_add = -180 / 5,
+            angle_split = 6,
+            inner_radius = start_circle_r,
+            outer_radius = start_circle_r + circle_add * (circle_length - 1),
+            circle_r = Math.min(height, width) / 120;
+
+        return {
+            'width': width,
+            'height': height,
+            'outer_circle': outer_circle,
+            'circle_length': circle_length,
+            'start_circle_r': start_circle_r,
+            'circle_add': circle_add,
+            'start_angle': start_angle,
+            'angle_add': angle_add,
+            'angle_split': angle_split,
+            'inner_radius': inner_radius,
+            'outer_radius': outer_radius,
+            'circle_r': circle_r
+        }
+    }
+
+    function count_orbitRadius_theta(s, c, l) {
+        var arr = [];
+        for (var i = 0; i < l; i++) {
+            arr.push(s + c * i)
+        }
+        return arr;
+    }; // orbitRadius:start_circle_r, circle_add, circle_length 
+    //theta: start_angle, angle_add, angle_split
+
+
+
+
+    function semiCircle() {
+
+        var Fan = setChartSize();
+
+        var orbitRadius = count_orbitRadius_theta(Fan.start_circle_r, Fan.circle_add, Fan.circle_length);
+        var theta = count_orbitRadius_theta(Fan.start_angle, Fan.angle_add, Fan.angle_split);
+
+        console.log(orbitRadius, theta);
+        console.log(Fan.width, Fan.outer_circle, Fan.outer_radius, Fan.inner_radius);
+
+
+        var flat_data = flat_d_d.map(function(d, i) {
+            console.log(d.r_level);
+            console.log(orbitRadius, orbitRadius[0]);
+            d.r = orbitRadius[d.r_level];
+            return d;
+        });
+
+        console.log(flat_data);
+
+
+        // plotting 
+
+        var svg = d3.select("#chart").append("svg")
+            .attr("width", Fan.width)
+            .attr("height", Fan.height)
+            .append("g")
+            // .attr("transform", function() {
+            //     var custom_h;
+            //     if (Fan.height > 850) {
+            //         custom_h = 1.4;
+            //     } else {
+            //         custom_h = 1.4 - 0.04 * ((850 - Fan.height) / 60);
+            //     }
+            //     console.log(custom_h);
+            //     console.log("translate(" + Fan.width / 2 + "," + Fan.height / custom_h + ")");
+            //     return "translate(" + Fan.width / 2 + "," + Fan.height / 1.15 + ")";
+            // });
+            .attr("transform", function() {
+                return "translate(" + Fan.width / 2 + "," + Fan.height / 1.9 + ")";
+            });
+
+        var arc_pie = d3.svg.arc()
+            .outerRadius(Fan.outer_radius)
+            .innerRadius(Fan.inner_radius);
+
+        var semi_arc_pie = d3.svg.arc()
+            .outerRadius(Fan.outer_radius / 1.38)
+            .innerRadius(Fan.inner_radius);
+
+        var arc = d3.svg.arc()
+            .innerRadius(function(d, i) {
+                if (i === 0) {
+                    return (d - 120);
+                } else if (i === 5) {
+                    return (d - 10)
+                } else {
+                    return (d - 1);
+                }
+
+            })
+            .outerRadius(function(d) {
+                return d;
+            })
+            .startAngle(0)
+            .endAngle(2 * Math.PI);
+
+        var arcs = svg.append("g").attr("class", "arc_group")
+
+        arcs.selectAll("path")
+            .data(orbitRadius)
+            .enter()
+            .append("path")
+            .attr("d", arc)
+            .attr("id", function(d, i) {
+                console.log('#p_' + i, d);
+                return 'p_' + i;
+            })
+            //.attr("shape-rendering","geometricPrecision")
+            .style("fill", function(d, i) {
+                if (i === 0) {
+                    return '#8a0917';
+                } else if (i === 5) {
+                    return '#8a0917';
+                } else {
+                    return 'hotpink';
+                }
+                //return i % 2 == 0 ? ' #cfd0d1' : 'transparent';
+            })
+
+        var pie = d3.layout.pie()
+            .sort(null)
+            .value(function(d) {
+                console.log(d.value);
+                return d.value;
+            })
+            .startAngle(0)
+            .endAngle(2 * Math.PI);
+
+        var semipie_up = d3.layout.pie()
+            .sort(null)
+            .value(function(d) {
+                console.log(d.value);
+                return d.value;
+            })
+            .startAngle(-Math.PI / 2)
+            .endAngle(Math.PI / 2);
+
+        var semipie_down = d3.layout.pie()
+            .sort(null)
+            .value(function(d) {
+                console.log(d.value);
+                return d.value;
+            })
+            .startAngle(Math.PI / 2)
+            .endAngle(Math.PI * 1.5);
+
+
+
+        var fans = svg.append("g").attr("class", "fan_group")
+
+        fans.selectAll("path")
+            .data(pie(dataset))
+            .enter()
+            .append("path")
+            .attr("d", arc_pie)
+            .attr("stroke", "#8a0817")
+            .attr("stroke-width", 1)
+            .attr("fill", function(d) {
+                return 'transparent';
+            })
+            // .style("opacity", ".5")
+            .attr("id", function(d) {
+                return d.data.legend;
+            })
+            .on("click", function(d) {
+                if (Fan.width < 767) {
+                    console.log(d, d.data.link, "click,fan.width < 767");
+                    window.location = d.data.link;
+                }
+            });
+
+        var semi_fan_up = svg.append("g").attr("class", "semifan_up")
+
+        semi_fan_up.selectAll("path")
+            .data(semipie_up(semi_dataset))
+            .enter()
+            .append("path")
+            .attr("d", semi_arc_pie)
+            .attr("fill", function(d) {
+                return '#8a0917';
+            })
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 2)
+            //.style("opacity", ".5")
+            .attr("id", function(d) {
+                return d.data.legend;
+            })
+            .on("click", function(d) {
+                if (Fan.width < 767) {
+                    console.log(d, d.data.link, "click,fan.width < 767");
+                    window.location = d.data.link;
+                }
+            });
+        var semi_fan_down = svg.append("g").attr("class", "semi_fan_down")
+
+        semi_fan_down.selectAll("path")
+            .data(semipie_down(semi_dataset))
+            .enter()
+            .append("path")
+            .attr("d", semi_arc_pie)
+            .attr("fill", function(d) {
+                return '#fff';
+            })
+            .attr("stroke", "#fff")
+            .attr("stroke-width", 2)
+            .attr("id", function(d) {
+                return d.data.legend;
+            })
+            .on("click", function(d) {
+                if (Fan.width < 767) {
+                    console.log(d, d.data.link, "click,fan.width < 767");
+                    window.location = d.data.link;
+                }
+            });
+
+
+        var txt_around_cir = svg.append("g").attr("class", "txt_intro").style("fill", "black");
+        txt_around_cir.selectAll("text")
+            .data(txt_intro)
+            .enter()
+            .append("text")
+            .attr("dx", Fan.inner_radius * 0.01)
+            .attr("dy", Fan.inner_radius * 0.08)
+            .style("font-size", function(d) {
+                if (d.path === "#p_1") {
+                    return Math.min(Fan.width, Fan.height) < 670 ? 22 : 40;
+                } else {
+                    return Math.min(Fan.width, Fan.height) < 670 ? 15 : 25;
+                }
+
+            })
+            .style("text-anchor", "middle")
+            .style("fill", function(d) {
+                if (d.id === "txt_intro_notxt1") {
+                    return '#fff';
+                } else {
+                    return '#8a0917';
+                }
+            })
+            .append("textPath")
+            .attr("xlink:href", function(d) {
+                return d.path;
+            })
+            .attr("startOffset", function(d) {
+                return d.angle;
+            })
+            .text(function(d) {
+                return d.txt;
+            })
+            .style("cursor", function(d) {
+                if (d.id !== "txt_intro_notxt1") {
+                    return "pointer";
+                } else {
+                    return "default";
+                }
+            })
+            .on("click",function(d){
+                window.open(d.link,'_blank');
+            })
+            .on("mouseover", function(d) {
+                d3.select(this).style("font-weight", "bold")
+                    //alert("hi");
+                var id = "#" + d.id;
+                console.log(d, d.id, id);
+                //$(".intro").fadeIn("slow");
+                if (d.id !== 'txt_intro_notxt1') {
+                    $(".title h1").hide().html(d.txt).fadeIn(400);
+                    $(".intro_txt p").hide().html(d.id).fadeIn(600);
+                    $(".intro a").attr("href", d.link);
+                }
+
+
+            })
+            .on("mouseout", function(d) {
+                d3.select(this).style("font-weight", "normal")
+            })
+
+        var resume_txt = svg.append("g").attr("class", "resume_txt");
+        resume_txt.append("text")
+            .attr('dx', -Fan.inner_radius / 2.2)
+            .attr('dy', -Fan.inner_radius / 100)
+            .text("Resume")
+            .style("font-size", function(d) {
+                return Math.min(Fan.width, Fan.height) < 670 ? 18 : 28;
+            })
+            .on("mouseover", function(d) {})
+
+        function getPointX(theta, r) {
+            return r * Math.cos(theta / 180 * Math.PI);
+        }
+
+        function getPointY(theta, r) {
+            return r * Math.sin(theta / 180 * Math.PI);
+        }
+
+
+    }
+    semiCircle();
+
+    $("#chart").css("margin-left", "-20%")
+
+
+    //     function resize() {
+    //         var Fan = setChartSize();
+    //         var orbitRadius = count_orbitRadius_theta(Fan.start_circle_r, Fan.circle_add, Fan.circle_length);
+    //         var theta = count_orbitRadius_theta(Fan.start_angle, Fan.angle_add, Fan.angle_split);
+    //         var last_radius_forrect = orbitRadius[16];
+
+    //         var flat_data = flat_d_d.map(function(d, i) {
+    //             console.log(d.r_level);
+    //             console.log(orbitRadius, orbitRadius[0]);
+    //             d.r = orbitRadius[d.r_level];
+    //             return d;
+    //         });
+
+    //         console.log(flat_data);
+
+
+
+    //         d3.select("svg").attr("width", Fan.width)
+    //             .attr("height", Fan.height)
+    //         d3.select("g").attr("transform", function() {
+    //             var custom_h;
+    //             if (Fan.height > 850) {
+    //                 custom_h = 1.4
+    //             } else {
+    //                 custom_h = 1.4 - 0.04 * ((850 - Fan.height) / 60);
+    //             }
+    //             console.log(custom_h);
+    //             console.log("translate(" + Fan.width / 2 + "," + Fan.height / custom_h + ")");
+    //             return "translate(" + Fan.width / 2 + "," + Fan.height / 1.15 + ")";
+    //         });
+
+
+
+    //         var arc = d3.svg.arc()
+    //             .innerRadius(function(d) {
+    //                 return (d - 1);
+    //             })
+    //             .outerRadius(function(d) {
+    //                 return d;
+    //             })
+    //             .startAngle(-Math.PI / 2)
+    //             .endAngle(Math.PI / 2);
+
+
+    //         var arc_pie = d3.svg.arc()
+    //             .outerRadius(Fan.outer_radius)
+    //             .innerRadius(Fan.inner_radius);
+
+    //         d3.selectAll(".arc_group path")
+    //             .data(orbitRadius)
+    //             .attr("d", arc)
+
+    //         d3.selectAll('.point_group circle')
+    //             .data(flat_data)
+    //             .attr('cx', function(d) {
+    //                 return getPointX(d.theta, d.r)mous
+    //             })
+    //             .attr('cy', function(d, i) {
+    //                 return getPointY(d.theta, d.r)
+    //             })
+    //             .attr('r', Fan.circle_r)
+
+    //         d3.selectAll(".fan_group path")
+    //             .data(pie(dataset))
+    //             .attr("d", arc_pie)
+
+
+    //         d3.select(".train")
+    //             .attr('x', -Fan.inner_radius / 1.6)
+    //             .attr('y', -Fan.inner_radius / 1.2)
+    //             .attr('width', Fan.inner_radius * 1.2)
+    //             .attr('height', Fan.inner_radius * 1.2)
+
+    //         d3.select(".title")
+    //             .attr('x', -Fan.outer_radius * 1.18)
+    //             .attr('y', -Fan.outer_radius * 1.68)
+    //             .attr('width', Fan.outer_radius * 2.36)
+    //             .attr('height', Fan.outer_radius * 2.2)
+    //             .attr("class", "title")
+    //             .attr("xlink:href", "imgs/pc/home/name_all_h800.svg")
+
+    //         d3.select(".legend")
+    //             .attr('x', function() {
+    //                 return Fan.width < 767 ? Fan.outer_radius / 1.9 : Fan.outer_radius / 2.2
+    //             })
+    //             .attr('y', function() {
+    //                 return Fan.width < 767 ? -Fan.outer_radius / 0.85 : -Fan.outer_radius / 0.8
+    //             })
+    //             .attr('width', Fan.outer_radius / 1.5)
+    //             .attr('height', Fan.outer_radius / 1.5)
+
+    //         d3.select('line')
+    //             .attr('class', 'axis x')
+    //             .attr('x1', -Fan.outer_radius)
+    //             .attr('y1', 0)
+    //             .attr('x2', Fan.outer_radius)
+    //             .attr('y2', 0)
+
+    //         d3.selectAll("text")
+    //             .attr("dx", function(d, i) {
+    //                 //console.log('resize text', d);
+    //                 var dx;
+    //                 var dx;
+    //                 if (Math.abs(d) === 106) {
+    //                     dx = d === 106 ? -Fan.outer_radius * 0.92 : Fan.outer_radius * 0.88;
+    //                 } else if (Math.abs(d) === 105) {
+    //                     dx = d === 105 ? -Fan.outer_radius * 0.87 : Fan.outer_radius * 0.83;
+    //                 } else if (Math.abs(d) === 104) {
+    //                     dx = d === 104 ? -Fan.outer_radius * 0.82 : Fan.outer_radius * 0.78;
+    //                 } else if (Math.abs(d) === 102) {
+    //                     dx = d === 102 ? -Fan.outer_radius * 0.72 : Fan.outer_radius * 0.68;
+    //                 } else if (Math.abs(d) === 100) {
+    //                     dx = d === 100 ? -Fan.outer_radius * 0.62 : Fan.outer_radius * 0.58;
+    //                 } else if (Math.abs(d) === 98) {
+    //                     dx = d === 98 ? -Fan.outer_radius * 0.5 : Fan.outer_radius * 0.48;
+    //                 } else if (Math.abs(d) === 96) {
+    //                     dx = d === 96 ? -Fan.outer_radius * 0.4 : Fan.outer_radius * 0.38;
+    //                 } else if (Math.abs(d) === 94) {
+    //                     dx = d === 94 ? -Fan.outer_radius * 0.3 : Fan.outer_radius * 0.27;
+    //                 } else if (Math.abs(d) === 92) {
+    //                     dx = d === 92 ? -Fan.outer_radius * 0.2 : Fan.outer_radius * 0.18;
+    //                 } else if (d === '年1') {
+    //                     dx = -Fan.outer_radius * 0.15;
+    //                 } else if (d === '年2') {
+    //                     dx = Fan.outer_radius * 0.14;
+    //                 } else {
+    //                     dx = d === '進度1' ? -Fan.outer_radius * 1.1 : Fan.outer_radius * 1.05;
+    //                 }
+    //                 return dx;
+    //             })
+    //             .attr("dy", function(d, i) {
+    //                 return Fan.outer_radius * 0.07;
+    //             })
+    //             .style("font-size", function() {
+    //                 return Math.min(Fan.width, Fan.height) < 640 ? 5.5 : 12;
+    //             })
+
+    //         d3.selectAll(".txt_intro text")
+    //             .attr("dx", Fan.inner_radius * 0.01)
+    //             .attr("dy", Fan.inner_radius * 0.05)
+    //             .style("font-size", function() {
+    //                 return Math.min(Fan.width, Fan.height) < 670 ? 7.3 : 13;
+    //             })
+
+    //         var arc_fan_legend = d3.svg.arc()
+    //             .outerRadius(last_radius_forrect * 1.2)
+    //             .innerRadius(last_radius_forrect);
+
+    //         d3.selectAll(".fan_group_legend path")
+    //             .data(pie(dataset))
+    //             .attr("d", arc_fan_legend)
+    //     }
+
+    //     window.addEventListener("resize", resize);
+
+    // }
+    </script>
+</body>
+
+</html>
