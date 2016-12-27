@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>shenzi</title>
+    <link rel="stylesheet" type="text/css" href="dist/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Helvetica">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="css/bubbletrend.css">
+    <link rel="stylesheet" type="text/css" href="css/bubble_cloud.css">
+    <!--     <link rel="stylesheet" type="text/css" href="css/style.css">
+    <link rel="stylesheet" type="text/css" href="css/chart.css"> -->
+    <script src="dist/jquery.min.js"></script>
+    <script src="dist/bootstrap.min.js"></script>
+    <!--     <script src="dist/d3.v3.min.js" charset="utf-8"></script> -->
+    <script src="dist/highcharts.js"></script>
+    <script src="dist/d3.min.js"></script>
+    <script src="dist/d3.layout.cloud.js"></script>
+    <script src="dist/treemap.js"></script>
+    <script src="js/keyword.js"></script>
+    <script src="js/h_treemap.js"></script>
+    <script src="js/bubbletrend.js"></script>
+    <script src="js/chart_storm.js"></script>
+    <script src="js/hbar.js"></script>
+    <script src="js/line_pie_chart.js"></script>
+    <script src="js/bubble_cloud.js"></script>
+    <style>
+    h1 {
+        text-align: center;
+        padding: 30px;
+    }
+    
+    .col-md-4 {
+        border: 1px solid blue;
+    }
+    
+    #wordcloud_demo,
+    #bubblechart_demo,
+    #kwstorm_demo,
+    #treemap_demo,
+    #bubbletrend_demo,
+    #linepie_demo,
+    #horizontal_bar_demo {
+        width: 250px;
+        height: 250px;
+        /*        background: lightgray;*/
+        margin-top: 20px;
+        border: 1px solid lightgray;
+    }
+    
+    .ch_intro p {
+        padding-top: 10px;
+    }
+    
+    #bubbletrend_demo,
+    #linepie_demo,
+    #horizontal_bar_demo {
+        margin-left: 50px;
+    }
+    
+    #wordcloud_demo img,
+    #bubblechart_demo img,
+    #kwstorm_demo img,
+    #treemap_demo img,
+    #bubbletrend_demo img,
+    #linepie_demo img,
+    #horizontal_bar_demo img {
+        width: 230px;
+        height: 230px;
+    }
+    
+    #treemap rect {
+        stroke-width: 2;
+        stroke: #fff;
+    }
+    
+    #treemap rect:hover {
+        stroke-width: 3;
+        stroke: #fff;
+    }
+    
+    .chachart {
+        margin-top: 50px;
+    }
+    
+    #d3wordcloud,
+    #treemap,
+    #bubbletrend,
+    #chart_storm,
+    #leaderchart {
+        width: 850px;
+        height: 500px;
+        /*        border: 1px solid yellow;*/
+        margin: 0 auto;
+    }
+    
+    #linechart {
+        width: 700px;
+        height: 500px;
+        /*        border: 1px solid yellow;*/
+        margin: 0 auto;
+        margin-left: 120px;
+    }
+    
+    #piechart {
+        width: 200px;
+        height: 400px;
+        /*        border: 1px solid yellow;*/
+        margin: 0 auto;
+        margin-top: 100px;
+    }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-md-12">
+                <h1>chaCharts</h1>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <a href="#d3wordcloud">
+                    <div id="wordcloud_demo">
+                        <img src="imgs/wordcloud_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>word cloud</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="#g-chart">
+                    <div id="bubblechart_demo">
+                        <img src="imgs/bubblechart_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>bubble chart</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="#chart_storm">
+                    <div id="kwstorm_demo">
+                        <img src="imgs/chart_storm_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>kwstorm</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="#treemap">
+                    <div id="treemap_demo">
+                        <img src="imgs/treemap_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>treemap</p>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <a href="#bubbletrend">
+                    <div id="bubbletrend_demo">
+                        <img src="imgs/bubble_trend_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>bubble trend</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#linechart">
+                    <div id="linepie_demo">
+                        <img src="imgs/linepie_chart_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>linepie</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#leaderchart">
+                    <div id="horizontal_bar_demo">
+                        <img src="imgs/leader_chart_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>horizontalbar</p>
+                </div>
+            </div>
+        </div>
+        <div class="row chachart">
+            <div class="col-md-12">
+                <div id="d3wordcloud"></div>
+            </div>
+        </div>
+        <div class="row chachart">
+            <div class="col-md-12">
+                <div id="g-chart" style="margin:0 auto;margin-top: 50px;margin-left: 150px">
+                    <svg class="g-nodes" width="850" height="500"></svg>
+                    <div class="g-labels"></div>
+                </div>
+            </div>
+        </div>
+        <div class="row chachart">
+            <div class="col-md-12">
+                <div id="treemap"></div>
+            </div>
+        </div>
+        <div class="row chachart">
+            <div class="col-md-12">
+                <div id="chart_storm"></div>
+            </div>
+        </div>
+        <div class="row chachart">
+            <div class="col-md-12">
+                <div id="bubbletrend"></div>
+            </div>
+        </div>
+        <div class="row chachart">
+            <div class="col-md-12">
+                <div id="leaderchart"></div>
+            </div>
+        </div>
+        <div class="row chachart">
+            <div class="col-md-9">
+                <div id="linechart"></div>
+            </div>
+            <div class="col-md-3">
+                <div id="piechart"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+    $(function() {
+        TreeMap(resp);
+        d3wordcloud(cloud_resp);
+        d3_bubble_trend();
+        chart_storm(kwstorm_resp);
+        h_bar(leader_resp);
+        linechart(linepie_data);
+        piechart(linepie_data);
+        d3_bubble_cloud();
+    });
+    </script>
+</body>
+
+</html>
