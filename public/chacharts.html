@@ -10,11 +10,8 @@
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
     <link rel="stylesheet" type="text/css" href="css/bubbletrend.css">
     <link rel="stylesheet" type="text/css" href="css/bubble_cloud.css">
-    <!--     <link rel="stylesheet" type="text/css" href="css/style.css">
-    <link rel="stylesheet" type="text/css" href="css/chart.css"> -->
     <script src="dist/jquery.min.js"></script>
     <script src="dist/bootstrap.min.js"></script>
-    <!--     <script src="dist/d3.v3.min.js" charset="utf-8"></script> -->
     <script src="dist/highcharts.js"></script>
     <script src="dist/d3.min.js"></script>
     <script src="dist/d3.layout.cloud.js"></script>
@@ -32,9 +29,6 @@
         padding: 30px;
     }
     
-    .col-md-4 {
-        border: 1px solid blue;
-    }
     
     #wordcloud_demo,
     #bubblechart_demo,
@@ -111,6 +105,16 @@
         margin: 0 auto;
         margin-top: 100px;
     }
+    
+    .chart_title {
+        font-size: 22px;
+    }
+    .cha {
+        color:#efbb88;
+    }
+    .cha span{
+        color:#74c1ab;
+    }
     </style>
 </head>
 
@@ -118,70 +122,60 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>chaCharts</h1>
+                <h1 class="cha"><span>cha</span>Charts</h1>
             </div>
         </div>
         <div class="row">
             <div class="col-md-3">
-                <a href="#d3wordcloud">
+                <a href="#d3wordcloud_title">
                     <div id="wordcloud_demo">
                         <img src="imgs/wordcloud_demo.png">
                     </div>
                 </a>
                 <div class="ch_intro">
-                    <p>word cloud</p>
+                    <p>關鍵文字雲</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <a href="#g-chart">
+                <a href="#g-chart_title">
                     <div id="bubblechart_demo">
                         <img src="imgs/bubblechart_demo.png">
                     </div>
                 </a>
                 <div class="ch_intro">
-                    <p>bubble chart</p>
+                    <p>關鍵泡泡圖</p>
                 </div>
             </div>
             <div class="col-md-3">
-                <a href="#chart_storm">
-                    <div id="kwstorm_demo">
-                        <img src="imgs/chart_storm_demo.png">
-                    </div>
-                </a>
-                <div class="ch_intro">
-                    <p>kwstorm</p>
-                </div>
-            </div>
-            <div class="col-md-3">
-                <a href="#treemap">
+                <a href="#treemap_title">
                     <div id="treemap_demo">
                         <img src="imgs/treemap_demo.png">
                     </div>
                 </a>
                 <div class="ch_intro">
-                    <p>treemap</p>
+                    <p>樹狀圖</p>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <a href="#chart_storm_title">
+                    <div id="kwstorm_demo">
+                        <img src="imgs/chart_storm_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>風暴圖</p>
                 </div>
             </div>
         </div>
         <div class="row">
             <div class="col-md-4">
-                <a href="#bubbletrend">
+                <a href="#bubbletrend_title">
                     <div id="bubbletrend_demo">
                         <img src="imgs/bubble_trend_demo.png">
                     </div>
                 </a>
                 <div class="ch_intro">
-                    <p>bubble trend</p>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <a href="#linechart">
-                    <div id="linepie_demo">
-                        <img src="imgs/linepie_chart_demo.png">
-                    </div>
-                </a>
-                <div class="ch_intro">
-                    <p>linepie</p>
+                    <p>泡泡趨勢圖</p>
                 </div>
             </div>
             <div class="col-md-4">
@@ -191,17 +185,29 @@
                     </div>
                 </a>
                 <div class="ch_intro">
-                    <p>horizontalbar</p>
+                    <p>橫條圖</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <a href="#linechart_title">
+                    <div id="linepie_demo">
+                        <img src="imgs/linepie_chart_demo.png">
+                    </div>
+                </a>
+                <div class="ch_intro">
+                    <p>綜合分析圖</p>
                 </div>
             </div>
         </div>
-        <div class="row chachart">
+        <div class="row chachart" style="margin-top: 100px">
             <div class="col-md-12">
+                <div class="chart_title" id="d3wordcloud_title">關鍵文字雲</div>
                 <div id="d3wordcloud"></div>
             </div>
         </div>
         <div class="row chachart">
             <div class="col-md-12">
+                <div class="chart_title" id="g-chart_title">關鍵泡泡圖</div>
                 <div id="g-chart" style="margin:0 auto;margin-top: 50px;margin-left: 150px">
                     <svg class="g-nodes" width="850" height="500"></svg>
                     <div class="g-labels"></div>
@@ -210,26 +216,31 @@
         </div>
         <div class="row chachart">
             <div class="col-md-12">
+                <div class="chart_title" id="treemap_title">樹狀圖</div>
                 <div id="treemap"></div>
             </div>
         </div>
         <div class="row chachart">
             <div class="col-md-12">
+                <div class="chart_title" id="chart_storm_title">風暴圖</div>
                 <div id="chart_storm"></div>
             </div>
         </div>
         <div class="row chachart">
             <div class="col-md-12">
+                <div class="chart_title" id="bubbletrend_title">泡泡趨勢圖</div>
                 <div id="bubbletrend"></div>
             </div>
         </div>
         <div class="row chachart">
+            <div class="chart_title" id="leaderchart_title">橫條圖</div>
             <div class="col-md-12">
                 <div id="leaderchart"></div>
             </div>
         </div>
         <div class="row chachart">
             <div class="col-md-9">
+                <div class="chart_title" id="linechart_title">綜合分析圖</div>
                 <div id="linechart"></div>
             </div>
             <div class="col-md-3">
