@@ -4,7 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <title>shenzi</title>
+    <title>Shenzi's Portfolio</title>
+    <link rel="icon" href="imgs/doublefish.png">
     <link rel="stylesheet" type="text/css" href="dist/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Helvetica">
     <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
@@ -20,38 +21,44 @@
         overflow-x: hidden;
         color: #2c3e50;
     }
+    
     </style>
 </head>
 
 <body>
+    <div class="title">
+        <img id="fishicon" src="imgs/doublefish.svg">
+        <h1>ABOUT ME</h1>
+        <img id="bubbleicon" src="imgs/bubbles.svg">
+    </div>
     <div class="resume">
         <div class="container" id="resume_txt">
             <h1>ZIHYU SHEN</h1>
             <hr class="hrstyle">
             <div id="profile">
                 <h2>Profile</h2>
-                <p>With strong passion of web development and design, I teach myself ho to build an user-friendly, easy-to-maintain web application using HTML,CSS,and Javascript. Being curious on latest design trends and new technologies has allowed me to </p>
+                <p>With strong passion for web development and design, I teach myself how to build an user-friendly, easy-to-maintain web application using HTML,CSS,and Javascript. Being curious on latest design trends and new technologies has motivated me to contantly learn and improve.</p>
             </div>
             <hr class="hrstyle">
             <div id="work_experience">
                 <h2>Work Experience</h2>
-                <h3>Front End Engineer<span class="workdate"><i>(2016.03 - present)</i></span></h3>
+                <h3>Front End Engineer<span class="workdate"><i> (Bignet information., Ltd, 2016.03 - present)</i></span></h3>
                 <ul>
-                    <li>Implement user facing features on interactive website <a href="">keypo.tw</a>, and create a variety of data visualizations using <span>D3.js</span>, <span>Highcharts.js</span>, <span>Google charts</span> and <span>Canvas</span></li>
+                    <li>Implement user facing features on interactive website <a href="http://keypo.tw/" target="_blank">keypo.tw</a>, and create a variety of data visualizations using <span>D3.js</span>, <span>Highcharts.js</span>, <span>Google Charts</span> and <span>Canvas</span></li>
                     <br>
-                    <li>Participate in redesign of marketing content for the web <a>dailyview.tw</a> using <span>jQuery</span> and <span>Bootstrap</span>, care deeply about <span>UI/UX</span></li>
+                    <li>Participate in redesign of marketing content for the web <a href="https://dvrevision-13e69.firebaseapp.com/" target="_blank">dailyview.tw</a> with <span>jQuery</span> and <span>Bootstrap</span>. Care deeply about <span>UI/UX</span></li>
                     <br>
-                    <li>Build <span>responsive design</span> websites that scales across various devices <a>SHSX</a></li>
+                    <li>Build <span>responsive design</span> websites that scales across various devices <a href="https://shsx-d1f7c.firebaseapp.com/" target="_blank">SHSX</a></li>
                     <br>
                     <li>Keep up with evolving web standards and best practices including <span>HTML5</span>, <span>CSS3</span></li>
                     <br>
-                    <li>Some experience using <span>Angular.js</span> and continually learn <span>React.js</span></li>
+                    <li>Work in <span>Angular.js</span>. Keep up learning <span>React.js</span></li>
                     <br>
                     <li>Work closely with product managers, design team and backend engineers who enjoy spending the time to make something great and believe that improvement is an iterative process</li>
                     <br>
-                    <li>Collaborate with backend engineers using <span>Gitlab</span>, <span>Bitbucket</span></li>
+                    <li>Collaborate with backend engineers via <span>GitLab</span>, <span>Bitbucket</span></li>
                 </ul>
-                <h3>Research Assitant<span class="workdate"><i>(2014.09 - 2016.02)</i></span></h3>
+                <h3>Research Assitant<span class="workdate"><i> (National Taiwan University, 2014.09 - 2016.02)</i></span></h3>
                 <ul>
                     <li>(MOST research grant) Altered Network Architecture of Language Processing in Aging: Contribution from the Right Hemisphere in Older Adults</li>
                     <li>(MOST research grant) The influence of mental imagery ability on metaphor comprehension</li>
@@ -61,29 +68,15 @@
             <div id="education">
                 <h2>Education</h2>
                 <b>Master of Linguistics <span class="workdate"><i>(2011-2014)</i></span></b>
-                <p>National Taiwan University<span>Taipei City, Taiwan</span></p>
+                <p>National Taiwan University<span> Taipei City, Taiwan</span></p>
                 <b>Bachelor of Chinese Literature <span class="workdate"><i>(2007-2011)</i></span> </b>
-                <p>National Chengchi University<span>Taipei City, Taiwan</span></p>
+                <p>National Chengchi University<span> Taipei City, Taiwan</span></p>
                 </ul>
             </div>
             <div id="see_more"><img id="arrow" src="imgs/left_up_arrow.svg">Click left chart to see my portfolio</div>
         </div>
     </div>
-    <div class="intro">
-        <div class="container" style="border:1px solid blue;margin:0 auto;max-width: 550px;margin-top:40vh">
-            <div class="title">
-                <h1></h1>
-            </div>
-            <hr>
-            <div class="intro_txt">
-                <p></p>
-            </div>
-            <a href="" target="_blank">
-                <button type="button" class="btn btn-primary">View</button>
-            </a>
-        </div>
-    </div>
-    <div id="chart" style="border:2px solid purple;"></div>
+    <div id="chart"></div>
     <script>
     $(function() {
         semiCircle();

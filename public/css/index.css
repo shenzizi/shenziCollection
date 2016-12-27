@@ -1,130 +1,158 @@
  body {
-        font-family: Lato;
-        overflow-x: hidden;
-        color: #2c3e50;
-    }
-    
-    .intro,
-    .resume {
-        width: 45vw;
-        height: 100vh;
-        /*        background: yellow;*/
-        position: absolute;
-        top: 0;
-        left: 55vw;
-        border: 1px solid green;
-    }
-    
-    .intro {
-        display: none;
-    }
-    
-    #resume_txt {
-        max-width: 550px;
-        border: 1px solid green;
-    }
-    
-    .intro button {
-        margin-top: 50px;
-    }
-    
-    h1,
-    h2,
-    h3 {
-        font-weight: bold;
-    }
-    
-    h1 {
-        font-size: 22px;
-    }
-    
-    h2 {
-        font-size: 20px;
-    }
-    
-    h3 {
-        font-size: 19px;
-    }
-    
-    h1,
-    h2 {
-        text-align: center;
-    }
-    
-    p,
-    li,
-    b {
-        font-size: 16px;
-    }
-    
-    hr.hrstyle {
-        border-top: 4px double #8c8b8b;
-        text-align: center;
-    }
-    
-    hr.hrstyle:after {
-        content: '\002665';
-        display: inline-block;
-        position: relative;
-        top: -15px;
-        padding: 0 10px;
-        background: #fff;
-        color: #8c8b8b;
-        font-size: 18px;
-    }
-    
-    ul span {
-        background: #e74c3c;
-        color: white;
-        font-weight: bold;
-        border-radius: 3px;
-        padding: 3px;
-        padding-top: 2px;
-    }
-    
-    .workdate {
-        font-size: 16px;
-        font-weight: normal;
-    }
-    
-    #education {
-        padding-bottom: 20px;
-    }
-    
-    #see_more {
-        padding-bottom: 20px;
-    }
-    
-    #arrow {
-        width: 30px;
-        height: 30px;
-        padding-right: 10px;
-    }
-    
-    @media screen and (max-width: 1024px) {
-        h1 {
-            font-size: 20px;
-        }
-        h2 {
-            font-size: 18px;
-        }
-        h3 {
-            font-size: 16px;
-        }
-        h1,
-        h2 {
-            text-align: center;
-        }
-        p,
-        li,
-        b {
-            font-size: 14.5px;
-        }
-        hr.hrstyle:after {
-            content: '';
-        }
-        .intro,
-        .resume {
-            left: 47.5vw;
-        }
-    }
+     font-family: Lato;
+     overflow-x: hidden;
+     color: #2c3e50;
+ }
+ 
+ .intro,
+ .resume {
+     width: 45vw;
+     height: 100vh;
+     /*        background: yellow;*/
+     position: absolute;
+     padding-top: 70px;
+     left: 55vw;
+    /* border: 1px solid green;*/
+ }
+ 
+ .intro {
+     display: none;
+ }
+ 
+ #resume_txt {
+     max-width: 550px;
+   /*  border: 1px solid green;*/
+ }
+ 
+ .intro button {
+     margin-top: 50px;
+ }
+ 
+ h1,
+ h2,
+ h3 {
+     font-weight: bold;
+ }
+ 
+ h1 {
+     font-size: 22px;
+ }
+ 
+ h2 {
+     font-size: 20px;
+ }
+ 
+ h3 {
+     font-size: 19px;
+ }
+ 
+ h1,
+ h2 {
+     text-align: center;
+ }
+ 
+ p,
+ li,
+ b {
+     font-size: 17px;
+ }
+ 
+ hr.hrstyle {
+     border-top: 4px double #8c8b8b;
+     text-align: center;
+ }
+ 
+ hr.hrstyle:after {
+     content: '\002665';
+     display: inline-block;
+     position: relative;
+     top: -15px;
+     padding: 0 10px;
+     background: #fff;
+     color: #8c8b8b;
+     font-size: 18px;
+ }
+ 
+ ul span {
+     background: #ea2e49;
+     /*#e74c3c*/
+     color: white;
+     font-weight: bold;
+     border-radius: 3px;
+     padding: 3px;
+     padding-top: 2px;
+     font-size: 16px;
+ }
+ 
+ .workdate {
+     font-size: 16px;
+     font-weight: normal;
+ }
+ 
+ #education {
+     padding-bottom: 20px;
+ }
+ 
+ #see_more {
+     padding-bottom: 20px;
+ }
+ 
+ #arrow {
+     width: 30px;
+     height: 30px;
+     padding-right: 10px;
+ }
+ 
+ .title {
+     position: absolute;
+ }
+ 
+ .title h1 {
+     font-size: 22px;
+     padding-left: 5px;
+     display: inline-block;
+     /*        border: 1px solid yellow;*/
+     padding-top: 20px;
+ }
+ 
+ .title img {
+     width: 60px;
+     height: 55px;
+     margin-left: 50px;
+     margin-top: -10px;
+     /*        border: 1px solid green;*/
+ }
+ 
+ #bubbleicon {
+     margin-left: 5px;
+     width: 35px;
+     height: 35px;
+ }
+ 
+ @media screen and (max-width: 1024px) {
+     h1 {
+         font-size: 20px;
+     }
+     h2 {
+         font-size: 18px;
+     }
+     h3 {
+         font-size: 16px;
+     }
+     h1,
+     h2 {
+         text-align: center;
+     }
+     p,
+     li,
+     b {
+         font-size: 14.5px;
+     }
+     hr.hrstyle:after {
+         content: '';
+     }
+     .intro,
+     .resume {
+         left: 47.5vw;
+     }
+ }

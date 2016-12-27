@@ -60,7 +60,8 @@ var txt_intro = [{
     'txt': 'foodgo',
     'angle': "1.5%",
     'path': '#p_4',
-    'id':'txt_intro_foodmap'
+    'id':'txt_intro_foodmap',
+    'link':'foodmap.html'
 }, {
     'txt': 'chaCharts',
     'angle': '10%',

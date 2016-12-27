@@ -121,7 +121,7 @@ function semiCircle() {
             } else if (i === 5) {
                 return '#8a0917';
             } else {
-                return 'hotpink';
+                return 'transparent'; //'#ea2e49';
             }
             //return i % 2 == 0 ? ' #cfd0d1' : 'transparent';
         })
@@ -208,11 +208,11 @@ function semiCircle() {
         .append("path")
         .attr("d", semi_arc_pie)
         .attr("fill", function(d) {
-            return 'lightgray';
+            return '#fff';
         })
-        .style("opacity", .5)
-        .attr("stroke", "#fff")
-        .attr("stroke-width", 2)
+        //.style("opacity", .5)
+        .attr("stroke", "#ea2e49")
+        .attr("stroke-width", 1)
         .attr("id", function(d) {
             return d.data.legend;
         })
@@ -258,10 +258,10 @@ function semiCircle() {
             return d.txt;
         })
         .style("cursor", function(d) {
-            if (d.id !== "txt_intro_notxt1") {
-                return "pointer";
-            } else {
+            if (d.id == "txt_intro_notxt1" || d.id === "txt_intro_notxt2") {
                 return "default";
+            } else {
+                return "pointer";
             }
         })
         .on("click", function(d) {
@@ -287,13 +287,14 @@ function semiCircle() {
 
     var resume_txt = svg.append("g").attr("class", "resume_txt");
     resume_txt.append("text")
-        .attr('dx', -Fan.inner_radius / 2.2)
+        .attr('dx', -Fan.inner_radius / 2)
         .attr('dy', -Fan.inner_radius / 100)
         .text("Resume")
         .style("font-size", function(d) {
             return Math.min(Fan.width, Fan.height) < 670 ? 18 : 28;
         })
-        .style("cursor", "pointer")
+        .style("fill","#fff")
+        //.style("cursor", "pointer")
         // .on("mouseover", function(d) {
         //     $(".intro").fadeOut("slow");
         //     $(".resume").fadeIn("slow");
