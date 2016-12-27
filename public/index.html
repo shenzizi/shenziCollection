@@ -2,551 +2,95 @@
 <html>
 
 <head>
-    <meta charset="utf-8">
-    <meta name="robots" content="noindex">
-    <title>foodmap</title>
-    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Muli">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>shenzi</title>
     <link rel="stylesheet" type="text/css" href="dist/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" href="css/foodmap/aster.css">
-    <link rel="stylesheet" type="text/css" href="css/foodmap/radar.css">
-    <link rel="stylesheet" type="text/css" href="css/foodmap/imgbar.css">
-    <script src="dist/jquery.min.js"></script><!--version 3.1.1-->
-    <script src="https://maps.googleapis.com/maps/api/js?libraries=places&key=AIzaSyDdpTRtQThkem_nD955vK_U9tEHifWbkOY"></script>
-    <script src='dist/d3.min.js'></script><!--version 3.4.11-->
-    <script src="dist/bootstrap.min.js"></script><!--version3.3.7-->
-    <script src="dist/d3.v3.min.js" charset="utf-8"></script><!--http://d3js.org/d3.v3.min.js-->
-    <script src="dist/d3.tip.v0.6.3.js"></script><!--http://labratrevenge.com/d3-tip/javascripts/d3.tip.v0.6.3.js-->
-    <script src="js/foodmap/mapstyles.js"></script>
-    <script src="js/foodmap/foodinfo.js"></script>
-    <script src="js/foodmap/aster_data.js"></script>
-    <script src="js/foodmap/aster01.js"></script>
-    <script src="js/foodmap/radar_data.js"></script>
-    <script src="js/foodmap/imgbar_data.js"></script>
-    <script src="js/foodmap/radar.js"></script>
-    <script src="js/foodmap/imgbar.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Helvetica">
+    <link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Lato">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
+    <script src="dist/jquery.min.js"></script>
+    <script src="dist/bootstrap.min.js"></script>
+    <script src="dist/d3.v3.min.js" charset="utf-8"></script>
+    <script src="js/shenzidata.js"></script>
+    <script src="js/index_chart.js"></script>
     <style>
-    .gmap {
-        margin-top: 20px;
-    }
-
-    p, h1, h2 {
-        color: white;
-    }
-    
-    .foodintro {
-        margin-top: 40px;
-        border-top-left-radius: 2em;
-    }
-    
-    .foodintro::before {
-        content: '';
-        display: inline-block;
-        width: 120px;
-        height: 60px;
-        background-color: #5eb299;
-        border-top-left-radius: 120px;
-        border-top-right-radius: 120px;
-        border: 2px solid #f6e497;
-        border-bottom: 0;
-        -ms-transform: rotate(140deg);
-        -webkit-transform: rotate(140deg);
-        transform: rotate(140deg);
-        margin-top: -40px;
-        margin-left: -35px;
-    }
-    
-    .container-fluid {
-        padding-left: 20px;
-        padding-right: 20px;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-    }
-    
-    .foodmap,
-    .foodmap svg {
-        position: absolute;
-    }
-    
-    .foodmap svg {
-        width: 50px;
-        height: 50px;
-        /*  padding-right: 100px;*/
-        font: 12px sans-serif;
-    }
-    
-    .foodmap circle {
-        fill: yellow;
-        /*        stroke: black;*/
-        stroke-width: 1.5px;
-    }
-    /*    .container-fluid {
-        border: 1px solid purple;
-        margin-top: 40px;
-    }*/
-    
-    .foodcon {
-     /*   border: 1px solid green;*/
-    }
-    
-    .foodintro_con {
-        background-color: #5eb299;
-        height: 100vh;
-        margin-top: 0;
-    }
-    
-    .foodintro {
-        border: 2px solid #f6e497;
-        padding-left: 20px;
-/*        padding-bottom: 20px;*/
-    }
-    
-    .col-md-8 {
-        /*       border: 10px solid yellow;*/
-    }
-    
-    .col-md-4 {
-      /*  border: 1px solid red;*/
-    }
-    
-    .col-md-6 {
-      /*  border: 1px solid grey;*/
-    }
-    
-    div.tooltip {
-        height: 40px;
-        color: white;
-        background-color: black;
-        padding-top: 10px;
-        padding-left: 10px;
-        font-size: 13px;
-        position: absolute;
-        width: 170px;
-        border-radius: 20px;
-        display: none;
-        z-index: 20;
-        opacity: .8;
-    }
-    
-    svg {
-       /* border: 1px solid brown;*/
-    }
-    
-    h1 {
-        font-size: 22px;
-    }
-    
-    h2 {
-        font-size: 18px;
-    }
-    
-    .imgbest1,
-    .imgbest2,
-    .imgmenu,
-    .imgenv {
-      /*  border: 1px solid orange;*/
-    }
-    
-    img {
-        width: 150px;
-        height: 130px;
-    }
-    
-    #logoimg {
-        width: 50px;
-        height: 50px;
-    }
-    
-    #searchicon {
-        width: 30px;
-        height: 30px;
-    }
-    
-    #search {
-        width: 150px;
-        height: 30px;
-    }
-    
-    #logo,
-    #search,
-    #searchicon {
-        display: inline-block;
-    }
-    
-    #search,
-    #searchicon {
-        float: right;
-        margin-top: 20px;
-    }
-    
-    #searchicon {
-        margin-right: 10px;
-    }
-    
-    .dropdown{
-        display: inline-block;
-    }
-    .dropdown button {
-        background-color: white;
-        color:gray;
-        margin-left: 10px;
-    }
-    .dropdown button:hover {
-        background-color: #5eb299;
-        color: white;
-    }
-    .dropdown-menu li {
-        padding: 10px;
-        cursor: pointer;
-    }
-    
-    .type, .cp {
-        background: white;
-        height: 20px;
-        display: inline-block;
-        border-radius: 5px;
-        padding: 2px 5px;
-        margin-left: 10px;
-    }
-    .cp {
-        background: #ffc0a9;
-    }
-    .shop {
-        display: inline-block;
-        color: #ffd393;
-        font-size: 25px;
-    }
-    .blog1a img, .blog2a img {
-        width: 80px;
-        margin-top: -50px;
-    }
-    .blog1a, .blog2a {
-        margin-top : 50px;
-   /*     border:1px solid yellow;*/
-    }
-    .bloga {
-        width:60px;
-        height:30px;
-        padding: 5px;
-        background:#fff0a5;
-        font-size: 12px;
-        border-radius: 3px;
-        color:brown;
+    body {
+        font-family: Lato;
+        overflow-x: hidden;
+        color: #2c3e50;
     }
     </style>
 </head>
 
 <body>
-    <div class="container-fluid foodcon">
-        <div class="row">
-            <div class="col-md-8">
-                <div>
+    <div class="resume">
+        <div class="container" id="resume_txt">
+            <h1>ZIHYU SHEN</h1>
+            <hr class="hrstyle">
+            <div id="profile">
+                <h2>Profile</h2>
+                <p>With strong passion of web development and design, I teach myself ho to build an user-friendly, easy-to-maintain web application using HTML,CSS,and Javascript. Being curious on latest design trends and new technologies has allowed me to </p>
+            </div>
+            <hr class="hrstyle">
+            <div id="work_experience">
+                <h2>Work Experience</h2>
+                <h3>Front End Engineer<span class="workdate"><i>(2016.03 - present)</i></span></h3>
+                <ul>
+                    <li>Implement user facing features on interactive website <a href="">keypo.tw</a>, and create a variety of data visualizations using <span>D3.js</span>, <span>Highcharts.js</span>, <span>Google charts</span> and <span>Canvas</span></li>
                     <br>
-                    <h1 id="logo" style="font-size: 40px;font-weight:bold;color:#8a0917;font-family:Muli">吃貨G<img id="logoimg" src="imgs/foodmap/pig.svg"></h1>
-                    <input type="text" class="form-control" id="search"><img id="searchicon" src="search.svg">
-                </div>
-                <!-- <button type="button" class="btn btn-default" id="areafilter">地區篩選</button>
-                <button type="button" class="btn btn-default" id="typefilter">食物篩選</button> -->
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">地區篩選
-                        <span class="caret"></span></button>
-                    <ul id="areafilter" class="dropdown-menu">
-                        <li id="taipeimain">台北車站</li>
-                        <li id=longshen>龍山寺</li>
-                        <li id="gonguan">公館</li>
-                    </ul>
-                </div>
-                <div class="dropdown">
-                    <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">食物篩選
-                        <span class="caret"></span></button>
-                    <ul class="dropdown-menu">
-                        <li>日式台式</li>
-                        <li>美式</li>
-                        <li>韓式</li>
-                        <li>台式</li>
-                    </ul>
-                </div>
-                <div class="gmap" id="map-canvas"></div>
+                    <li>Participate in redesign of marketing content for the web <a>dailyview.tw</a> using <span>jQuery</span> and <span>Bootstrap</span>, care deeply about <span>UI/UX</span></li>
+                    <br>
+                    <li>Build <span>responsive design</span> websites that scales across various devices <a>SHSX</a></li>
+                    <br>
+                    <li>Keep up with evolving web standards and best practices including <span>HTML5</span>, <span>CSS3</span></li>
+                    <br>
+                    <li>Some experience using <span>Angular.js</span> and continually learn <span>React.js</span></li>
+                    <br>
+                    <li>Work closely with product managers, design team and backend engineers who enjoy spending the time to make something great and believe that improvement is an iterative process</li>
+                    <br>
+                    <li>Collaborate with backend engineers using <span>Gitlab</span>, <span>Bitbucket</span></li>
+                </ul>
+                <h3>Research Assitant<span class="workdate"><i>(2014.09 - 2016.02)</i></span></h3>
+                <ul>
+                    <li>(MOST research grant) Altered Network Architecture of Language Processing in Aging: Contribution from the Right Hemisphere in Older Adults</li>
+                    <li>(MOST research grant) The influence of mental imagery ability on metaphor comprehension</li>
+                </ul>
             </div>
-            <!--           <div class="col-md-8">hi</div> -->
-            <div class="col-md-4 foodintro_con">
-                <div class="foodintro">
-                    <div>
-                        <h1 class="shop">ZOCA佐卡義式窯烤披薩屋</h1>
-                        <span class="type" style="">義式/pizza</span>
-                        <span class="cp" style="">cp值:6</span>
-                    </div>
-                    <h2 class="opening_hr">營業時間: 二～日11:30~14:30、18:00~21:30</h2>
-                    <h2 class="price">均消: NT280-550</h2>
-                    <h2 class="phone">電話: 02-2707-2212</h2>
-                    <h2 class="booking">預約: 可訂位</h2>
-                    <h2 class="address">地址: 台北市中正區開封街一段48號</h2>
-                    <div class="radarchart" style="display: inline-block;"></div>
-                    <div class="imgbar" style="display: inline-block;"></div>
-                    <div class="row">
-                        <div class="col-md-12" style="margin-top: 20px">
-                            <div class="col-md-6"><img class="imgbest1" src="imgs/foodmap/food6_01.jpg"></div>
-                            <div class="col-md-6"><img class="imgbest2" src="imgs/foodmap/food6_02.jpg"></div>
-                        </div>
-                        <div class="col-md-12" style="margin-top: 20px">
-                            <div class="col-md-6"><img class="imgmenu" src="imgs/foodmap/food6_menu.jpg"></div>
-                            <div class="col-md-6"><img class="imgenv" src="imgs/foodmap/food6_env.jpg"></div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="col-md-6">
-                                <a class="blog1a" href="http://margaret1122.pixnet.net/blog/post/38739513-%E3%80%90%E5%8F%B0%E5%8C%97%E9%A3%9F%E8%A8%98%E3%80%91%E7%BE%A9%E5%A4%A7%E5%88%A9%E7%BE%8E%E9%A3%9F%E9%81%94%E4%BA%BA%E9%BD%8A%E6%8E%A8%E8%96%A6%EF%BC%9A%E4%B8%BB%E5%BB%9A%E5%AE%B6" target="_blank">
-                                    <p class="bloga">食記1</p>
-                                    <img class="blog1 pull-right" src="imgs/foodmap/shop1.svg">
-                                </a>
-                            </div>
-                            <div class="col-md-6">
-                                <a class="blog2a" href="http://www.niniyeh.com/2014/12/zocapizza.html" target="_blank">
-                                    <p class="bloga">食記2</p>
-                                    <img class="blog2 pull-right" src="imgs/foodmap/shop2.svg">
-                                </a>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+            <hr class="hrstyle">
+            <div id="education">
+                <h2>Education</h2>
+                <b>Master of Linguistics <span class="workdate"><i>(2011-2014)</i></span></b>
+                <p>National Taiwan University<span>Taipei City, Taiwan</span></p>
+                <b>Bachelor of Chinese Literature <span class="workdate"><i>(2007-2011)</i></span> </b>
+                <p>National Chengchi University<span>Taipei City, Taiwan</span></p>
+                </ul>
             </div>
+            <div id="see_more"><img id="arrow" src="imgs/left_up_arrow.svg">Click left chart to see my portfolio</div>
         </div>
     </div>
+    <div class="intro">
+        <div class="container" style="border:1px solid blue;margin:0 auto;max-width: 550px;margin-top:40vh">
+            <div class="title">
+                <h1></h1>
+            </div>
+            <hr>
+            <div class="intro_txt">
+                <p></p>
+            </div>
+            <a href="" target="_blank">
+                <button type="button" class="btn btn-primary">View</button>
+            </a>
+        </div>
+    </div>
+    <div id="chart" style="border:2px solid purple;"></div>
     <script>
-    function setpage() {
-        var svgw = $(".gmap").width();
-        var svgh = $(window).height() * 0.8;
-        // $("#map-canvas").css("width", "100%");
-        $("#map-canvas").css("height", svgh);
-        console.log(svgw, svgh);
-        radar_refresh("food6");
-        imgbar("food6");
-    }
-
-    setpage();
-
-    $(window).resize(function() {
-        setpage();
+    $(function() {
+        semiCircle();
+        var chart_margin = $(window).width() > 1024 ? "-20%" : "-25%";
+        $("#chart").css("margin-left", chart_margin);
+        window.addEventListener("resize", redraw);
     })
-    var map;
-    var overlay = new google.maps.OverlayView();
-    var mapOptions = {
-        mapTypeId: google.maps.MapTypeId.ROADMAP
-            // styles: styles['hide']
-    }
-
-    function initialize() {
-        var mapOptions = {
-            zoom: 14,
-            center: new google.maps.LatLng(25.033206, 121.543973),
-            mapTypeId: google.maps.MapTypeId.ROADMAP
-        };
-        map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-        map.setOptions({
-            styles: map_styles_zoom14
-        });
-    }
-
-    initialize();
-
-    var data = foodinfo.results;
-    drawMap(data);
-
-    $("#areafilter li").click(function() {
-        var stationid = this.id; 
-        var stationpos = {"taipeimain":"25.046255,121.517532","gonguan":"25.014908,121.534216","longshen":"25.03528,121.499826"}[stationid].split(",");
-        var lat = parseFloat(stationpos[0]), lng = parseFloat(stationpos[1]); 
-        console.log(stationid,stationpos,lat,lng);
-        alert("areafilter");
-        map.setOptions({
-            zoom: 16,
-            center: {lat: lat, lng: lng }
-        })
-
-    })
-
-
-    function drawMap() {
-
-        // 設定圖形長寬, 半徑
-        var width = 35,
-            height = 40,
-            radius = Math.min(width, height) / 2;
-
-        // color
-        var color = d3.scale.category10();
-        var pie = d3.layout.pie();
-
-        var arc = d3.svg.arc()
-            .innerRadius(0)
-            .outerRadius(radius);
-
-        // Add the container when the overlay is added to the map.
-        overlay.onAdd = function() {
-            // var layer = d3.select(this.getPanes().overlayLayer).append("div")
-            //     .attr("class", "stations");
-            var layer = d3.select(this.getPanes().overlayMouseTarget)
-                .append("div")
-                .attr("class", "foodmap");
-
-            overlay.draw = function() {
-                var projection = this.getProjection(),
-                    padding = 30;
-
-                var marker = layer.selectAll("svg")
-                    .data(d3.entries(data))
-                    .each(transform)
-                    .enter().append("svg")
-                    .each(transform)
-                    .attr({
-                        'class': "marker",
-                        "width": width,
-                        "height": height,
-                        "transform": "translate(" + width / 2 + "," + height / 2 + ")",
-                    });
-
-                var div = d3.select(".gmap").append("div")
-                    .attr("class", "tooltip")
-
-                marker.append("svg:image")
-                    .attr('x', 0)
-                    .attr('y', 0)
-                    .attr('width', 25)
-                    .attr('height', 25)
-                    .attr("class", "drink")
-                    .attr("xlink:href", function(d) {
-                        return d.value.icon
-                    })
-                    .style("opacity", .9)
-                    .on("mouseover", function(d) {
-                        var shopname = d.value.name;
-                        var hr = d.value.hr;
-                        var address = d.value.address;
-                        var phone = d.value.phone;
-                        var booking = d.value.booking;
-                        var price = d.value.price;
-                        var imgmenu = d.value.imgmenu;
-                        var imgenv = d.value.imgenv;
-                        var imgbest1 = d.value.imgbest1;
-                        var imgbest2 = d.value.imgbest2;
-                        var type = d.value.type;
-                        var cp = d.value.cp;
-                        var blog1link = d.value.link1;
-                        var blog2link = d.value.link2; 
-                        $(".shop").html(shopname);
-                        $(".phone").html("電話: " + phone);
-                        $(".booking").html("預約: " + booking);
-                        $(".price").html("均消: " + price);
-                        $(".address").html("地址: " + address);
-                        $(".opening_hr").html("營業時間: " + hr);
-                        $(".imgenv").attr("src", imgenv);
-                        $(".imgmenu").attr("src", imgmenu);
-                        $(".imgbest1").attr("src", imgbest1);
-                        $(".imgbest2").attr("src", imgbest2);
-                        $(".type").html(type);
-                        $(".cp").html("cp值: " + cp);
-                        $(".blog1a").attr("href",blog1link);
-                        $(".blog2a").attr("href",blog2link);
-                        console.log(blog1link);
-                        console.log(d, shopname);
-                        div.transition()
-                            .duration(100)
-                            .style("display", "block")
-                            .style("opacity", .75)
-                        div.html(shopname)
-                            .style("left", d3.event.pageX + 10 + "px")
-                            .style("top", (d3.event.pageY) - 130 + "px")
-                            // drawAster();
-                            //alert("radar_mouseover");
-                        var foodid = d.value.id;
-                        var radar_class = ".radarchart" + foodid;
-                        console.log(foodid);
-                        var checksvg = $(".radarchart svg").has(radar_class);
-                        if (checksvg.length === 0) {
-                            console.log(radar_class, checksvg, checksvg.length);
-                            radar_refresh(foodid);
-                        }
-                        imgbar(foodid);
-
-                    })
-                    .on("mouseout", function(d) {
-                        div.transition()
-                            .duration(500)
-                            .style("display", "none")
-                    })
-                    .on("click", function(d) {
-                        console.log('clicked');
-
-                    })
-                    // marker.append("circle")
-                    //     .attr("r", 15)
-                    //     .attr("cx", padding)
-                    //     .attr("cy", padding);
-
-
-                // 加入標籤
-                // marker.append("text")
-                //     .attr("x", padding + 7)
-                //     .attr("y", padding)
-                //     .attr("dy", ".31em")
-                //     .attr("class", "txt")
-                //     .style("opacity", 0)
-                //     .style("fill", "green")
-                //     .text(function(d) {
-                //         return d.value.name;
-                //     });
-
-                function transform(d) {
-                    d = new google.maps.LatLng(d.value.lat, d.value.lng);
-                    d = projection.fromLatLngToDivPixel(d);
-                    return d3.select(this)
-                        .style("left", (d.x - padding) + "px")
-                        .style("top", (d.y - padding) + "px");
-                }
-
-            };
-
-        };
-
-        map.addListener('zoom_changed', function() {
-            //alert('Zoom: ' + map.getZoom());
-            var zoomlevel = map.getZoom();
-            if (zoomlevel <= 13) {
-                d3.selectAll('.drink')
-                    .attr('width', 20)
-                    .attr('height', 20)
-                map.setOptions({
-                    styles: map_styles_zoom14
-                });
-            } else if (zoomlevel === 14) {
-                d3.selectAll('.drink')
-                    .attr('width', 25)
-                    .attr('height', 25)
-                map.setOptions({
-                    styles: map_styles_zoom14
-                });
-            } else if (zoomlevel === 15) {
-                d3.selectAll('.drink')
-                    .attr('width', 30)
-                    .attr('height', 30)
-                d3.selectAll('.txt')
-                    .style("opacity", 1)
-                console.log("zoomin");
-                map.setOptions({
-                    styles: map_styles_zoom15
-                });
-            } else if (zoomlevel === 16) {
-                d3.selectAll('.drink')
-                    .attr('width', 40)
-                    .attr('height', 40)
-                map.setOptions({
-                    styles: map_styles_zoom16
-                });
-            }
-        });
-
-        // Bind our overlay to the map…
-        overlay.setMap(map);
-
-    }
     </script>
 </body>
 
